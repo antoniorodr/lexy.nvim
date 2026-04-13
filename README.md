@@ -1,4 +1,4 @@
-<h1 align="center">Lexy.nvim</h1>
+<h1 align="center">`Lexy.nvim`</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/antoniorodr/Lexy.nvim?color=56BEB8">
@@ -16,14 +16,6 @@
   <img alt="Github stars" src="https://img.shields.io/github/stars/antoniorodr/Lexy.nvim?color=56BEB8" /> 
 </p>
 
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Lexy.nvim 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
-
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
@@ -39,11 +31,11 @@
 
 ## :dart: About
 
-Neovim plugin to use [Lexy](https://github.com/antoniorodr/lexy) in your Neovim editor.
+[Lexy](https://github.com/antoniorodr/lexy) is a lightweight CLI tool that fetches programming tutorials from "Learn X in Y Minutes" directly into your terminal. `lexy.nvim` is a Neovim plugin to use Lexy in your Neovim editor.
 
 ## :sparkles: Features
 
-:heavy_check_mark: Search for documentation using a Neovim picker like [snacks.nvim](https://github.com/folke/snacks.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim):\\
+:heavy_check_mark: Search for documentation using a Neovim picker like [snacks.nvim](https://github.com/folke/snacks.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim);\\
 :heavy_check_mark: Open documentation in a buffer from the cmd;
 
 ## :white_check_mark: Requirements
@@ -54,11 +46,31 @@ You will also need [Neovim](https://neovim.io/) version 0.11 or higher.
 
 ## :checkered_flag: Installation
 
-<!-- TODO: Add installation instructions -->
+### `vim.pack`
+
+```lua  
+vim.schedule(function()
+    vim.pack.add('antoniorodr/lexy.nvim')
+end)
+```
+
+### `lazy.nvim`
+
+```lua
+return {
+  'antoniorodr/lexy.nvim',
+  dependencies = {
+    'folke/snacks.nvim', -- Or 'nvim-telescope/telescope.nvim' 
+  },
+}
+```
+
+> [!tip]
+> It's a good idea to run `:checkhealth snacks` to see if everything is set up correctly.
 
 ## :memo: License
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is under license from Apache 2.0. For more details, see the [LICENSE](LICENSE.md) file.
 
 ## :eyes: Do you like my work?
 
