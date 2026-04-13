@@ -1,19 +1,19 @@
-<h1 align="center">`Lexy.nvim`</h1>
+<h1 align="center">Lexy.nvim</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/antoniorodr/Lexy.nvim?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/antoniorodr/lexy.nvim?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/antoniorodr/Lexy.nvim?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/antoniorodr/lexy.nvim?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/antoniorodr/Lexy.nvim?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/antoniorodr/lexy.nvim?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/antoniorodr/Lexy.nvim?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/antoniorodr/lexy.nvim?color=56BEB8">
 
-  <img alt="Github issues" src="https://img.shields.io/github/issues/antoniorodr/Lexy.nvim?color=56BEB8" />
+  <img alt="Github issues" src="https://img.shields.io/github/issues/antoniorodr/lexy.nvim?color=56BEB8" />
 
-  <img alt="Github forks" src="https://img.shields.io/github/forks/antoniorodr/Lexy.nvim?color=56BEB8" /> 
+  <img alt="Github forks" src="https://img.shields.io/github/forks/antoniorodr/lexy.nvim?color=56BEB8" /> 
 
-  <img alt="Github stars" src="https://img.shields.io/github/stars/antoniorodr/Lexy.nvim?color=56BEB8" /> 
+  <img alt="Github stars" src="https://img.shields.io/github/stars/antoniorodr/lexy.nvim?color=56BEB8" /> 
 </p>
 
 <p align="center">
