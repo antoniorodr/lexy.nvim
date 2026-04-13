@@ -1,33 +1,25 @@
-<div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="your_repo" />
-
-  &#xa0;
-
-  <!-- <a href="https://your_repo.netlify.app">Demo</a> -->
-</div>
-
-<h1 align="center">your_repo</h1>
+<h1 align="center">Lexy.nvim</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/antoniorodr/your_repo?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/antoniorodr/Lexy.nvim?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/antoniorodr/your_repo?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/antoniorodr/Lexy.nvim?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/antoniorodr/your_repo?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/antoniorodr/Lexy.nvim?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/antoniorodr/your_repo?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/antoniorodr/Lexy.nvim?color=56BEB8">
 
-  <img alt="Github issues" src="https://img.shields.io/github/issues/antoniorodr/your_repo?color=56BEB8" />
+  <img alt="Github issues" src="https://img.shields.io/github/issues/antoniorodr/Lexy.nvim?color=56BEB8" />
 
-  <img alt="Github forks" src="https://img.shields.io/github/forks/antoniorodr/your_repo?color=56BEB8" /> 
+  <img alt="Github forks" src="https://img.shields.io/github/forks/antoniorodr/Lexy.nvim?color=56BEB8" /> 
 
-  <img alt="Github stars" src="https://img.shields.io/github/stars/antoniorodr/your_repo?color=56BEB8" /> 
+  <img alt="Github stars" src="https://img.shields.io/github/stars/antoniorodr/Lexy.nvim?color=56BEB8" /> 
 </p>
 
 <!-- Status -->
 
 <!-- <h4 align="center"> 
-	🚧  your_repo 🚀 Under construction...  🚧
+	🚧  Lexy.nvim 🚀 Under construction...  🚧
 </h4> 
 
 <hr> -->
@@ -47,45 +39,22 @@
 
 ## :dart: About
 
-Describe your project
+Neovim plugin to use [Lexy](https://github.com/antoniorodr/lexy) in your Neovim editor.
 
 ## :sparkles: Features
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
-
-## :rocket: Technologies
-
-The following tools were used in this project:
-
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+:heavy_check_mark: Search for documentation using a Neovim picker like [snacks.nvim](https://github.com/folke/snacks.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim):\\
+:heavy_check_mark: Open documentation in a buffer from the cmd;
 
 ## :white_check_mark: Requirements
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before using `lexy.nvim`, you need to have [Lexy](https://github.com/antoniorodr/lexy) installed. You can follow the instructions in the [Lexy repository](https://github.com/antoniorodr/lexy).
 
-## :checkered_flag: Starting
+You will also need [Neovim](https://neovim.io/) version 0.11 or higher.
 
-```bash
-# Clone this project
-$ git clone https://github.com/antoniorodr/your_repo
+## :checkered_flag: Installation
 
-# Access
-$ cd your_repo
-
-# Install dependencies
-$ yarn
-
-# Run the project
-$ yarn start
-
-# The server will initialize in the <http://localhost:3000>
-```
+<!-- TODO: Add installation instructions -->
 
 ## :memo: License
 
