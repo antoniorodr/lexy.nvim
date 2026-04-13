@@ -1,0 +1,11 @@
+name: run-tests
+on: [workflow_call]
+jobs:
+  run-tests:
+    name: "Run tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout and setup
+        uses: actions/checkout@v6.0.1
+
+        #TODO: Write logic to run test for neovim plugin (lua)
