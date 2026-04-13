@@ -35,8 +35,8 @@
 
 ## :sparkles: Features
 
-:heavy_check_mark: Search for documentation using a Neovim picker like [snacks.nvim](https://github.com/folke/snacks.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim);\\
-:heavy_check_mark: Open documentation in a buffer from the cmd;
+:heavy_check_mark: Search for documentation using a Neovim picker like [snacks.nvim](https://github.com/folke/snacks.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)\
+:heavy_check_mark: Open documentation in a buffer from the cmd
 
 ## :white_check_mark: Requirements
 
