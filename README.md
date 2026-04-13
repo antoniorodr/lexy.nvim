@@ -1,83 +1,86 @@
-<h1 align="center">Lexy.nvim</h1>
+<a id="lexy-nvim"></a>
 
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/antoniorodr/lexy.nvim?color=56BEB8">
+# lexy.nvim
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/antoniorodr/lexy.nvim?color=56BEB8">
+> [!caution]
+> **Status:** Under development
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/antoniorodr/lexy.nvim?color=56BEB8">
+## ℹ️ About
 
-  <img alt="License" src="https://img.shields.io/github/license/antoniorodr/lexy.nvim?color=56BEB8">
+**lexy.nvim** is a Neovim plugin for working with local [Lexy](https://github.com/antoniorodr/lexy) documentation inside the editor. It is intended to connect Lexy's cached Learn X in Y Minutes files with familiar Neovim workflows and picker UIs.
 
-  <img alt="Github issues" src="https://img.shields.io/github/issues/antoniorodr/lexy.nvim?color=56BEB8" />
+The project is currently focused on the integration layer: setup, commands, keymaps, and picker backends for Neovim.
 
-  <img alt="Github forks" src="https://img.shields.io/github/forks/antoniorodr/lexy.nvim?color=56BEB8" /> 
+Project documentation currently lives in this README.
 
-  <img alt="Github stars" src="https://img.shields.io/github/stars/antoniorodr/lexy.nvim?color=56BEB8" /> 
-</p>
+## 🎬 Demo
 
-<p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/antoniorodr" target="_blank">Author</a>
-</p>
+## ✨ Features
 
-<br>
+- Integrates local Lexy documentation into Neovim
+- Registers a `:LexySearch {query}` user command
+- Provides a configurable keymap hook for Lexy actions
+- Reads documentation from Lexy's local cache in `~/.config/lexy/files/`
+- Includes starter backend modules for `snacks.nvim` and `telescope.nvim`
+- Keeps the plugin setup lightweight and Lua-native
 
+## 📋 Requirements
 
-## :dart: About
+Before starting, make sure the required tools and dependencies are installed on your machine:
 
-[Lexy](https://github.com/antoniorodr/lexy) is a lightweight CLI tool that fetches programming tutorials from "Learn X in Y Minutes" directly into your terminal. `lexy.nvim` is a Neovim plugin to use Lexy in your Neovim editor.
+```bash
+nvim --version
+lexy --help
+```
 
-## :sparkles: Features
+`lexy.nvim` requires Neovim 0.11 or newer and a working [Lexy](https://github.com/antoniorodr/lexy) installation. Since the plugin reads Lexy's local cache, you should run Lexy at least once so the files under `~/.config/lexy/files/` exist.
 
-:heavy_check_mark: Search for documentation using a Neovim picker like [snacks.nvim](https://github.com/folke/snacks.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)\
-:heavy_check_mark: Open documentation in a buffer from the cmd
+To use a picker UI, install either [snacks.nvim](https://github.com/folke/snacks.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 
-## :white_check_mark: Requirements
-
-Before using `lexy.nvim`, you need to have [Lexy](https://github.com/antoniorodr/lexy) installed. You can follow the instructions in the [Lexy repository](https://github.com/antoniorodr/lexy).
-
-You will also need [Neovim](https://neovim.io/) version 0.11 or higher.
-
-## :checkered_flag: Installation
+## 📦 Installation
 
 ### `vim.pack`
 
-```lua  
+```lua
 vim.schedule(function()
-    vim.pack.add('antoniorodr/lexy.nvim')
+  vim.pack.add({
+    { src = "https://github.com/antoniorodr/lexy.nvim" },
+  })
 end)
 ```
 
 ### `lazy.nvim`
 
 ```lua
-return {
-  'antoniorodr/lexy.nvim',
+{
+  "antoniorodr/lexy.nvim",
   dependencies = {
-    'folke/snacks.nvim', -- Or 'nvim-telescope/telescope.nvim' 
+    "folke/snacks.nvim", -- or "nvim-telescope/telescope.nvim"
   },
+  config = function()
+    require("lexy").setup()
+  end,
 }
 ```
 
-> [!tip]
-> It's a good idea to run `:checkhealth snacks` to see if everything is set up correctly.
+## 🚀 Getting Started
 
-## :memo: License
+Once installed, configure the plugin and use one of the exposed entry points:
 
-This project is under license from Apache 2.0. For more details, see the [LICENSE](LICENSE.md) file.
+```lua
+require("lexy").setup({
+  keymap = "<leader>sl",
+})
+```
 
-## :eyes: Do you like my work?
+Then use `:LexySearch python` or the configured keymap as your entry point into the plugin. The picker flow is still under active development.
 
-If you like my work and want to support me, you can buy me a coffee ☕ or even a burrito 🌯 by sponsoring me.
+If you are using `snacks.nvim`, it is a good idea to run `:checkhealth snacks` to verify that the picker integration is set up correctly.
+
+## ❤️ Do you like my work?
+
+If you find the project useful, you can support the author here:
 
 [![GitHub Sponsor](https://img.shields.io/badge/Sponsor_on_GitHub-30363D?logo=github&style=for-the-badge)](https://github.com/sponsors/antoniorodr)
 
-&#xa0;
-
-<a href="#top">Back to top</a>
+[Back to top](#lexy-nvim)
