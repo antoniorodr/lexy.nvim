@@ -1,6 +1,4 @@
-<a id="lexy-nvim"></a>
-
-# lexy.nvim
+# `lexy.nvim`
 
 > [!caution]
 > **Status:** Under development
