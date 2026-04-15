@@ -3,14 +3,15 @@ local Snacks = require("snacks")
 
 local common_layout_options = {
 	preview = true,
-	preset = "telescope",
 	layout = {
-		{
+		preset = "telescope",
+		layout = {
 			win = "preview",
-			width = 0.8,
+			width = 0.9,
 		},
 	},
 }
+
 local common_win_options = {
 	preview = {
 		wo = {
@@ -25,6 +26,7 @@ local common_win_options = {
 		},
 	},
 }
+
 local function get_data_dirs(opts)
 	local data_dir = common.data_folder()
 	if not (opts and opts.restrict_sources) then
