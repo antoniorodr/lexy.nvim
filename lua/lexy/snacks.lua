@@ -47,10 +47,6 @@ local function format_entries(item, picker)
 			hl,
 			virtual = true,
 		},
-		{
-			"SnacksPickerSpecial",
-			field = "file",
-		},
 	}
 	new_item[#new_item + 1] = {
 		common.filename_to_display(filename),
@@ -65,9 +61,9 @@ local function lexy_list(opts)
 		layout = common_layout_options,
 		win = common_win_options,
 		dirs = get_data_dirs(opts),
-		confirm = function(picker, item)
-			require("apidocs").open_doc_in_new_window(item.file)
-		end,
+		-- confirm = function(picker, item)
+		-- 	require("apidocs").open_doc_in_new_window(item.file)
+		-- end,
 		format = format_entries,
 	})
 end
