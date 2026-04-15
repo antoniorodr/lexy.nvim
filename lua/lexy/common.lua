@@ -3,7 +3,13 @@ local function data_folder()
 end
 
 local function filename_to_display(filename)
-	return filename:match("^[^.]+") or filename
+	local name, extension = filename:match("(.+)%.([^%.]+)$")
+
+	if name then
+		return name, extension
+	else
+		return filename, nil
+	end
 end
 
 local function get_lexy_docs()
