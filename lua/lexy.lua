@@ -26,7 +26,6 @@ end
 M.search = function(query)
 	if not query or query == "" then
 		vim.notify("Please provide a search query.")
-		vim.error("Please provide a search query.")
 		return
 	end
 

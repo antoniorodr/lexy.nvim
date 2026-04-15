@@ -34,7 +34,7 @@ local function find_docs(query)
 		end
 	end
 
-	vim.notify("No documentation found for query: " .. query)
+	vim.notify("No documentation found for query: " .. query, vim.log.levels.WARN)
 end
 
 return {
