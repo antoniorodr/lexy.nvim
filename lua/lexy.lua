@@ -66,10 +66,24 @@ M.setup = function(opts)
 	})
 
 	vim.api.nvim_create_user_command("LexySearch", function(query)
-		M.search(query)
+		M.search(query.args)
 	end, {
 		desc = "Search for a file in lexy",
 		nargs = 1,
+		complete = function(arg_lead)
+			local common = require("lexy.common")
+			local matches = {}
+
+			for file in vim.fs.dir(common.data_folder()) do
+				local name, _ = common.file_info(file)
+
+				if name:find(arg_lead, 1, true) == 1 then
+					table.insert(matches, name)
+				end
+			end
+
+			return matches
+		end,
 	})
 end
 

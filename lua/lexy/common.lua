@@ -26,14 +26,19 @@ local function find_docs(query)
 	local data_dir = data_folder()
 
 	for file in vim.fs.dir(data_dir) do
-		if file:match(query) then
+		local name = file_info(file)
+		if name == query then
 			open_file_buffer(data_dir .. file)
+			return
 		end
 	end
+
+	vim.notify("No documentation found for query: " .. query)
 end
 
 return {
 	data_folder = data_folder,
 	file_info = file_info,
 	open_file_buffer = open_file_buffer,
+	find_docs = find_docs,
 }
