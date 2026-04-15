@@ -14,7 +14,7 @@ local function file_info(filename)
 end
 
 local function open_file_buffer(path)
-	vim.cmd("edit " .. path)
+	vim.cmd("edit " .. vim.fn.fnameescape(path))
 
 	local buf = vim.api.nvim_get_current_buf()
 	vim.bo[buf].readonly = true
@@ -24,11 +24,12 @@ end
 
 local function find_docs(query)
 	local data_dir = data_folder()
+	local wanted = query:lower()
 
 	for file in vim.fs.dir(data_dir) do
-		local name, extension = file_info(file)
-		if name == query then
-			open_file_buffer(data_dir .. file .. "." .. extension)
+		local name, _ = file_info(file)
+		if name:lower() == wanted then
+			open_file_buffer(data_dir .. file)
 			return
 		end
 	end
