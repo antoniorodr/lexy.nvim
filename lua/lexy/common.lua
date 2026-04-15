@@ -25,5 +25,5 @@ end
 return {
 	data_folder = data_folder,
 	file_info = file_info,
-	get_lexy_docs = get_lexy_docs,
+	open_file_buffer = open_file_buffer,
 }
