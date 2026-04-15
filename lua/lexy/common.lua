@@ -26,9 +26,9 @@ local function find_docs(query)
 	local data_dir = data_folder()
 
 	for file in vim.fs.dir(data_dir) do
-		local name = file_info(file)
+		local name, extension = file_info(file)
 		if name == query then
-			open_file_buffer(data_dir .. file)
+			open_file_buffer(data_dir .. file .. "." .. extension)
 			return
 		end
 	end
