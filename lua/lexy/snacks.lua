@@ -4,6 +4,12 @@ local Snacks = require("snacks")
 local common_layout_options = {
 	preview = true,
 	preset = "telescope",
+	layout = {
+		{
+			win = "preview",
+			width = 0.8,
+		},
+	},
 }
 local common_win_options = {
 	preview = {
@@ -49,7 +55,7 @@ local function format_entries(item, picker)
 	return {
 		{ icon, hl, virtual = true },
 		{
-			filename,
+			filename .. filetype,
 			"SnacksPickerFile",
 			field = "file",
 		},
