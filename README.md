@@ -1,7 +1,7 @@
 # `lexy.nvim`
 
 > [!caution]
-> **Status:** Under development
+> **Status:** Under development. Still not production-ready.
 
 ## ℹ️ About
 
