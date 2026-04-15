@@ -33,7 +33,7 @@ M.search = function(query)
 	--TODO: Search for the query and present items in a picker (snacks/telescope)
 end
 
-M.list = function()
+M.list = function(opts)
 	--This function will do the same as `Lexy list`command, but it will be opened with the neovim picker (snacks/telescope)
 	--TODO: List all the items in the lexy_local_docs directory and present them in a picker (snacks/telescope)
 	local picker = Config.picker
@@ -49,7 +49,10 @@ end
 
 M.setup = function(opts)
 	opts = opts or {}
-	vim.api.nvim_create_user_command("LexyList", M.list, {})
+	set_picker(opts)
+	vim.api.nvim_create_user_command("LexyList", function()
+		M.list(opts)
+	end, {})
 	vim.api.nvim_create_user_command("LexySearch", function(opts)
 		M.search(opts.args)
 	end, {

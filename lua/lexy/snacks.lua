@@ -19,7 +19,7 @@ local common_win_options = {
 		},
 	},
 }
-local function get_data_dirs()
+local function get_data_dirs(opts)
 	local data_dir = common.data_folder()
 	if not (opts and opts.restrict_sources) then
 		return { data_dir }
@@ -49,7 +49,7 @@ local function format_entries(item, picker)
 		},
 	}
 	new_item[#new_item + 1] = {
-		common.filename_to_display(filename),
+		common.file_info(filename),
 		"SnacksPickerFile",
 		field = "file",
 	}
@@ -60,7 +60,7 @@ local function lexy_list(opts)
 	Snacks.picker.files({
 		layout = common_layout_options,
 		win = common_win_options,
-		dirs = get_data_dirs(),
+		dirs = get_data_dirs(opts),
 		-- confirm = function(picker, item)
 		-- 	require("apidocs").open_doc_in_new_window(item.file)
 		-- end,
