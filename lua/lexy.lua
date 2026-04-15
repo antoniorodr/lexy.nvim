@@ -2,7 +2,7 @@ local M = {}
 
 local Config = {
 	picker = nil,
-	keymap = "<leader>sl",
+	keymap = "<leader>sll",
 }
 
 local function resolve_picker(opts)
@@ -24,9 +24,9 @@ local function resolve_picker(opts)
 end
 
 M.search = function(query)
-	-- This function will search for the query in the lexy_local_docs directory and return the file
 	if not query or query == "" then
 		vim.notify("Please provide a search query.")
+		vim.error("Please provide a search query.")
 		return
 	end
 
@@ -38,10 +38,12 @@ M.list = function(opts)
 
 	if picker == "snacks" then
 		require("lexy.snacks").lexy_list(opts)
+		return
 	end
 
 	-- if picker == "telescope" then
 	-- 	require("lexy.telescope").lexy_list(opts)
+	-- 	return
 	-- end
 
 	vim.notify("No picker found, using ui_select")
@@ -51,7 +53,7 @@ M.setup = function(opts)
 	opts = opts or {}
 
 	Config.picker = resolve_picker(opts)
-	Config.keymap = opts.keymap or "<leader>sl"
+	Config.keymap = opts.keymap or "<leader>sll"
 	Config.restrict_sources = opts.restrict_sources
 
 	vim.api.nvim_create_user_command("LexyList", function()
