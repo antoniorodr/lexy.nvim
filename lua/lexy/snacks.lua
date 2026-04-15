@@ -3,9 +3,6 @@ local Snacks = require("snacks")
 
 local common_layout_options = {
 	preview = true,
-	layout = {
-		preset = "telescope",
-	},
 }
 
 local common_win_options = {
