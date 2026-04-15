@@ -48,7 +48,7 @@ local function format_entries(item, picker)
 	local filename, extension = common.file_info(basename)
 	local filetype = extension or "txt"
 
-	local icon, hl = Snacks.util.icon(filetype, "filetype", {
+	local icon, hl = Snacks.util.icon(basename, "file", {
 		fallback = picker.opts.icons.files,
 	})
 
