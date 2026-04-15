@@ -25,7 +25,7 @@ end
 
 M.search = function(query)
 	if not query or query == "" then
-		vim.notify("Please provide a search query.")
+		vim.notify("Please provide a search query.", vim.log.levels.WARN)
 		return
 	end
 
@@ -45,7 +45,7 @@ M.list = function(opts)
 	-- 	return
 	-- end
 
-	vim.notify("No picker found, using ui_select")
+	vim.notify("No picker found, using ui_select", vim.log.levels.INFO)
 end
 
 M.setup = function(opts)
