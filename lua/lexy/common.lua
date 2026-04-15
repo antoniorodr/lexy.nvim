@@ -2,7 +2,7 @@ local function data_folder()
 	return os.getenv("HOME") .. "/.config/lexy/files/"
 end
 
-local function filename_to_display(filename)
+local function file_info(filename)
 	local name, extension = filename:match("(.+)%.([^%.]+)$")
 
 	if name then
@@ -15,7 +15,7 @@ end
 local function get_lexy_docs()
 	local docs = {}
 	for file in vim.fs.dir(data_folder()) do
-		local filename = filename_to_display(file)
+		local filename = file_info(file)
 		docs[filename] = vim.fs.joinpath(data_folder(), file)
 	end
 	return docs
@@ -23,6 +23,6 @@ end
 
 return {
 	data_folder = data_folder,
-	filename_to_display = filename_to_display,
+	file_info = file_info,
 	get_lexy_docs = get_lexy_docs,
 }

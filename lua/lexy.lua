@@ -1,4 +1,27 @@
+local common = require("lexy.common")
+
 local M = {}
+
+Config = {}
+
+local function set_picker(opts)
+	if opts and (opts.picker == "snacks" or opts.picker == "telescope" or opts.picker == "ui_select") then
+		return opts
+	end
+	if not opts then
+		opts = {}
+	end
+	if package.loaded["snacks"] then
+		opts.picker = "snacks"
+		return opts
+	end
+	if package.loaded["telescope"] then
+		opts.picker = "telescope"
+		return opts
+	end
+	opts.picker = "ui_select"
+	return opts
+end
 
 M.search = function(query)
 	-- This function will search for the query in the lexy_local_docs directory and return the file
@@ -13,6 +36,15 @@ end
 M.list = function()
 	--This function will do the same as `Lexy list`command, but it will be opened with the neovim picker (snacks/telescope)
 	--TODO: List all the items in the lexy_local_docs directory and present them in a picker (snacks/telescope)
+	local picker = Config.picker
+	if opts and opts.picker then
+		picker = opts.picker
+	end
+
+	if picker == "snacks" then
+		require("lexy.snacks").lexy_list(opts)
+		return
+	end
 end
 
 M.setup = function(opts)
