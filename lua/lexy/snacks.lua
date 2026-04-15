@@ -35,25 +35,25 @@ local function get_data_dirs(opts)
 end
 
 local function format_entries(item, picker)
-	local filename = common.file_info(item)[1]
-	local filetype = common.file_info(item)[2] or "txt"
+	local path = item.file or item.text or item
+	local basename = vim.fs.basename(path)
+	local filename, extension = common.file_info(basename)
+	local filetype = extension or "txt"
+
 	local icon, hl = Snacks.util.icon(filetype, "filetype", {
 		fallback = picker.opts.icons.files,
 	})
+
 	icon = Snacks.picker.util.align(icon, picker.opts.formatters.file.icon_width or 2)
-	local new_item = {
+
+	return {
+		{ icon, hl, virtual = true },
 		{
-			icon,
-			hl,
-			virtual = true,
+			filename,
+			"SnacksPickerFile",
+			field = "file",
 		},
 	}
-	new_item[#new_item + 1] = {
-		common.file_info(filename),
-		"SnacksPickerFile",
-		field = "file",
-	}
-	return new_item
 end
 
 local function lexy_list(opts)
