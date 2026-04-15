@@ -5,10 +5,6 @@ local common_layout_options = {
 	preview = true,
 	layout = {
 		preset = "telescope",
-		layout = {
-			win = "preview",
-			width = 0.9,
-		},
 	},
 }
 
