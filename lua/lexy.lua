@@ -17,7 +17,7 @@ end
 
 M.setup = function(opts)
 	opts = opts or {}
-	-- vim.api.nvim_create_user_command("LexyList", M.list, {})
+	vim.api.nvim_create_user_command("LexyList", M.list, {})
 	vim.api.nvim_create_user_command("LexySearch", function(opts)
 		M.search(opts.args)
 	end, {
