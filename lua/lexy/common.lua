@@ -3,27 +3,11 @@ local function data_folder()
 	return folder
 end
 
-local function file_info(filename)
-	local name, extension = filename:match("(.+)%.([^%.]+)$")
+local function open_file_buffer(path)
+	vim.cmd("edit " .. path)
 
-	if name then
-		return name, extension
-	else
-		return filename, nil
-	end
+	local buf = vim.api.nvim_get_current_buf()
+	vim.bo[buf].readonly = true
+	vim.bo[buf].modifiable = false
+	vim.diagnostic.enable(false, { bufnr = buf })
 end
-
-local function get_lexy_docs()
-	local docs = {}
-	for file in vim.fs.dir(data_folder()) do
-		local filename = file_info(file)
-		docs[filename] = vim.fs.joinpath(data_folder(), file)
-	end
-	return docs
-end
-
-return {
-	data_folder = data_folder,
-	file_info = file_info,
-	get_lexy_docs = get_lexy_docs,
-}
