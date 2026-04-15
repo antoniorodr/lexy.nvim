@@ -57,7 +57,7 @@ local function format_entries(item, picker)
 	return {
 		{ icon, hl, virtual = true },
 		{
-			filename .. filetype,
+			filename .. "." .. filetype,
 			"SnacksPickerFile",
 			field = "file",
 		},
