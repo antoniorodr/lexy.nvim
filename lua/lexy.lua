@@ -1,5 +1,3 @@
-local common = require("lexy.common")
-
 local M = {}
 
 local Config = {
@@ -32,7 +30,7 @@ M.search = function(query)
 		return
 	end
 
-	--TODO: Search for the query and present items in a picker (snacks/telescope)
+	require("lexy.common").find_docs(query)
 end
 
 M.list = function(opts)
@@ -67,8 +65,8 @@ M.setup = function(opts)
 		silent = true,
 	})
 
-	vim.api.nvim_create_user_command("LexySearch", function(opts)
-		M.search(opts.args)
+	vim.api.nvim_create_user_command("LexySearch", function(query)
+		M.search(query)
 	end, {
 		desc = "Search for a file in lexy",
 		nargs = 1,
