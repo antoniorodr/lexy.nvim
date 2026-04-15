@@ -2,25 +2,27 @@ local common = require("lexy.common")
 
 local M = {}
 
-Config = {}
+local Config = {
+	picker = nil,
+	keymap = "<leader>sl",
+}
 
-local function set_picker(opts)
-	if opts and (opts.picker == "snacks" or opts.picker == "telescope" or opts.picker == "ui_select") then
-		return opts
+local function resolve_picker(opts)
+	if opts and opts.picker then
+		return opts.picker
 	end
-	if not opts then
-		opts = {}
+
+	local has_snacks = pcall(require, "snacks")
+	if has_snacks then
+		return "snacks"
 	end
-	if package.loaded["snacks"] then
-		opts.picker = "snacks"
-		return opts
+
+	local has_telescope = pcall(require, "telescope")
+	if has_telescope then
+		return "telescope"
 	end
-	if package.loaded["telescope"] then
-		opts.picker = "telescope"
-		return opts
-	end
-	opts.picker = "ui_select"
-	return opts
+
+	return "ui_select"
 end
 
 M.search = function(query)
@@ -34,37 +36,42 @@ M.search = function(query)
 end
 
 M.list = function(opts)
-	--This function will do the same as `Lexy list`command, but it will be opened with the neovim picker (snacks/telescope)
-	--TODO: List all the items in the lexy_local_docs directory and present them in a picker (snacks/telescope)
-	local picker = Config.picker
-	if opts and opts.picker then
-		picker = opts.picker
-	end
+	local picker = (opts and opts.picker) or Config.picker
 
 	if picker == "snacks" then
 		require("lexy.snacks").lexy_list(opts)
-		return
 	end
+
+	-- if picker == "telescope" then
+	-- 	require("lexy.telescope").lexy_list(opts)
+	-- end
+
+	vim.notify("No picker found, using ui_select")
 end
 
 M.setup = function(opts)
 	opts = opts or {}
-	set_picker(opts)
+
+	Config.picker = resolve_picker(opts)
+	Config.keymap = opts.keymap or "<leader>sl"
+	Config.restrict_sources = opts.restrict_sources
+
 	vim.api.nvim_create_user_command("LexyList", function()
-		M.list(opts)
+		M.list(Config)
 	end, {})
+
+	vim.keymap.set("n", Config.keymap, function()
+		M.list(Config)
+	end, {
+		desc = "List items",
+		silent = true,
+	})
+
 	vim.api.nvim_create_user_command("LexySearch", function(opts)
 		M.search(opts.args)
 	end, {
 		desc = "Search for a file in lexy",
 		nargs = 1,
-	})
-
-	local keymap = opts.keymap or "<leader>sl"
-
-	vim.keymap.set("n", keymap, M.list, {
-		desc = "List items from lexy",
-		silent = true, -- Prevents the command from being echoed in the command line
 	})
 end
 
