@@ -1,6 +1,5 @@
 local function data_folder()
 	local folder = os.getenv("HOME") .. "/.config/lexy/files/"
-	print("Data folder: " .. folder)
 	return folder
 end
 
