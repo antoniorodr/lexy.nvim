@@ -16,13 +16,13 @@ local common_win_options = {
 	preview = {
 		wo = {
 			number = true,
-			relativenumber = false,
+			relativenumber = true,
 			signcolumn = "no",
 			conceallevel = 2,
 			concealcursor = "n",
 			winfixbuf = true,
 			list = false,
-			wrap = false,
+			wrap = true,
 		},
 	},
 }
