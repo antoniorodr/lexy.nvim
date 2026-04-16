@@ -14,7 +14,7 @@
 ## ✨ Features
 
 - Integrates local Lexy documentation into Neovim
-- Registers a `:LexySearch {query}` and a `:LexyList` user command
+- Registers a `:LexySearch {query}`, `:LexyUpdate` and a `:LexyList` user command
 - Provides a configurable keymap hook for `:LexyList` command
 - Reads documentation from Lexy's local cache in `~/.config/lexy/files/`
 - Integration with `snacks.nvim` and `telescope.nvim`
@@ -50,7 +50,7 @@ end)
 
 ## 🚀 Getting Started
 
-Once installed, you can either use the `:LexySearch {query}` and `:LexyList` user commands or the default keymap `<leader>sll` to start searching through your local Lexy documentation. The plugin will read from the cached files in `~/.config/lexy/files/` and present results in a picker UI if you have one of the supported picker plugins installed.
+Once installed, you can either use the `:LexySearch {query}`, `:LexyUpdate` and `:LexyList` user commands or the default keymap `<leader>sll` to start searching through your local Lexy documentation and `<leader>slu` to update and fetch new documentation if available. The plugin will read from the cached files in `~/.config/lexy/files/` and present results in a picker UI if you have one of the supported picker plugins installed.
 
 > [!tip]
 > It's a good idea to run `:checkhealth snacks` to see if everything is set up correctly.
@@ -62,7 +62,8 @@ The plugin provides a `setup` function that accepts a configuration table for cu
 ```lua
 require("lexy").setup({
     keymaps = {
-        search = "<leader>S",
+        search = "<leader>ls",
+        update = "<leader>lu",
     },
 })
 ```
