@@ -9,11 +9,13 @@
 
 ## 🎬 Demo
 
+![Lexy.nvim demo](./assets/lexy.nvim.gif)
+
 ## ✨ Features
 
 - Integrates local Lexy documentation into Neovim
 - Registers a `:LexySearch {query}` and a `:LexyList` user command
-- Provides a configurable keymap hook for Lexy actions
+- Provides a configurable keymap hook for `:LexyList` command
 - Reads documentation from Lexy's local cache in `~/.config/lexy/files/`
 - Integration with `snacks.nvim` and `telescope.nvim`
 
