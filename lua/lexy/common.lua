@@ -64,11 +64,13 @@ end
 
 local function update_data()
 	vim.system({ "lexy", "update" }, { text = true }, function(obj)
-		if obj.code == 0 then
-			vim.notify("Lexy updated successfully", vim.log.levels.INFO)
-		else
-			vim.notify("Lexy update failed: " .. obj.stderr, vim.log.levels.ERROR)
-		end
+		vim.schedule(function()
+			if obj.code == 0 then
+				vim.notify("Lexy updated successfully", vim.log.levels.INFO)
+			else
+				vim.notify("Lexy update failed: " .. (obj.stderr or ""), vim.log.levels.ERROR)
+			end
+		end)
 	end)
 end
 
