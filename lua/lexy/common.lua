@@ -3,6 +3,8 @@ local function data_folder()
 	return folder
 end
 
+---@param filename string
+---@return string name, string|nil extension
 local function file_info(filename)
 	local name, extension = filename:match("(.+)%.([^%.]+)$")
 
@@ -13,7 +15,13 @@ local function file_info(filename)
 	end
 end
 
+---@param path string
 local function open_file_buffer(path)
+	local previous_win = vim.api.nvim_get_current_win()
+	local target_width = math.max(math.floor(vim.api.nvim_win_get_width(previous_win) / 2), 1)
+
+	vim.cmd("botright vsplit")
+	vim.api.nvim_win_set_width(vim.api.nvim_get_current_win(), target_width)
 	vim.cmd("edit " .. vim.fn.fnameescape(path))
 
 	local buf = vim.api.nvim_get_current_buf()
@@ -22,6 +30,7 @@ local function open_file_buffer(path)
 	vim.diagnostic.enable(false, { bufnr = buf })
 end
 
+---@param query string
 local function find_docs(query)
 	local data_dir = data_folder()
 	local wanted = query:lower()
