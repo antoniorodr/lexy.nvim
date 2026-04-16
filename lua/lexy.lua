@@ -72,10 +72,10 @@ M.list = function(opts)
 		return
 	end
 
-	-- if picker == "telescope" then
-	-- 	require("lexy.telescope").lexy_list(opts)
-	-- 	return
-	-- end
+	if picker == "telescope" then
+		require("lexy.telescope").lexy_list(opts)
+		return
+	end
 
 	vim.notify("No picker found, using ui_select", vim.log.levels.INFO)
 end
