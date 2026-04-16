@@ -1,10 +1,17 @@
 local M = {}
 
+---@class Config
+---@field picker string|nil "snacks", "telescope", or "ui_select"
+---@field keymaps table|nil
 local Config = {
 	picker = nil,
-	keymap = "<leader>sll",
+	keymaps = {
+		list = "<leader>sll",
+	},
 }
 
+---@param opts table|nil
+---@return string
 local function resolve_picker(opts)
 	if opts and opts.picker then
 		return opts.picker
@@ -23,6 +30,30 @@ local function resolve_picker(opts)
 	return "ui_select"
 end
 
+local function set_keymaps()
+	local maps = {
+		list = {
+			mode = "n",
+			rhs = function()
+				M.list(Config)
+			end,
+			desc = "List items",
+		},
+	}
+
+	for name, map in pairs(maps) do
+		local lhs = Config.keymaps[name]
+
+		if lhs ~= false and lhs ~= nil then
+			vim.keymap.set(map.mode, lhs, map.rhs, {
+				desc = map.desc,
+				silent = true,
+			})
+		end
+	end
+end
+
+---@param query string
 M.search = function(query)
 	if not query or query == "" then
 		vim.notify("Please provide a search query.", vim.log.levels.WARN)
@@ -32,6 +63,7 @@ M.search = function(query)
 	require("lexy.common").find_docs(query)
 end
 
+---@param opts table|nil
 M.list = function(opts)
 	local picker = (opts and opts.picker) or Config.picker
 
@@ -48,23 +80,18 @@ M.list = function(opts)
 	vim.notify("No picker found, using ui_select", vim.log.levels.INFO)
 end
 
+---@param opts table|nil
 M.setup = function(opts)
 	opts = opts or {}
 
 	Config.picker = resolve_picker(opts)
-	Config.keymap = opts.keymap or "<leader>sll"
-	Config.restrict_sources = opts.restrict_sources
+	Config.keymaps = vim.tbl_deep_extend("force", Config.keymaps, opts.keymaps or {})
+
+	set_keymaps()
 
 	vim.api.nvim_create_user_command("LexyList", function()
 		M.list(Config)
 	end, {})
-
-	vim.keymap.set("n", Config.keymap, function()
-		M.list(Config)
-	end, {
-		desc = "List items",
-		silent = true,
-	})
 
 	vim.api.nvim_create_user_command("LexySearch", function(query)
 		M.search(query.args)
