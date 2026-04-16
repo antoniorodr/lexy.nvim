@@ -20,6 +20,7 @@ local common_win_options = {
 	},
 }
 
+---@param opts? { restrict_sources: string[] }
 local function get_data_dirs(opts)
 	local data_dir = common.data_folder()
 	if not (opts and opts.restrict_sources) then
@@ -35,6 +36,9 @@ local function get_data_dirs(opts)
 	return dirs
 end
 
+---@param item Snacks.PickerItem
+---@param picker Snacks.Picker
+---@return Snacks.FormattedEntry[]
 local function format_entries(item, picker)
 	local path = item.file or item.text or item
 	local basename = vim.fs.basename(path)
@@ -57,6 +61,7 @@ local function format_entries(item, picker)
 	}
 end
 
+---@param opts? { restrict_sources: string[] }
 local function lexy_list(opts)
 	Snacks.picker.files({
 		layout = common_layout_options,
