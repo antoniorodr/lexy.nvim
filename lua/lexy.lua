@@ -106,6 +106,10 @@ M.setup = function(opts)
 		M.list(Config)
 	end, {})
 
+	vim.api.nvim_create_user_command("LexyUpdate", function()
+		M.update()
+	end, {})
+
 	vim.api.nvim_create_user_command("LexySearch", function(query)
 		M.search(query.args)
 	end, {
