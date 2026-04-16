@@ -29,9 +29,8 @@ To use a picker UI, install either [snacks.nvim](https://github.com/folke/snacks
 
 ```lua
 vim.schedule(function()
-  vim.pack.add({
-    { src = "https://github.com/antoniorodr/lexy.nvim" },
-  })
+	vim.pack.add({ "https://github.com/antoniorodr/lexy.nvim" })
+	require("lexy").setup()
 end)
 ```
 
@@ -43,18 +42,28 @@ end)
   dependencies = {
     "folke/snacks.nvim", -- or "nvim-telescope/telescope.nvim"
   },
-  config = function()
-    require("lexy").setup()
-  end,
+  opts = {} -- see Configuration section below if you want to customize the plugin
 }
 ```
 
 ## 🚀 Getting Started
 
-Once installed, you can either use the `:LexySearch {query}` and `:LexyList` user commands or the default keymap `<leader>sl` to start searching through your local Lexy documentation. The plugin will read from the cached files in `~/.config/lexy/files/` and present results in a picker UI if you have one of the supported picker plugins installed.
+Once installed, you can either use the `:LexySearch {query}` and `:LexyList` user commands or the default keymap `<leader>sll` to start searching through your local Lexy documentation. The plugin will read from the cached files in `~/.config/lexy/files/` and present results in a picker UI if you have one of the supported picker plugins installed.
 
 > [!tip]
 > It's a good idea to run `:checkhealth snacks` to see if everything is set up correctly.
+
+## 🛠️ Configuration
+
+The plugin provides a `setup` function that accepts a configuration table for customize the keymaps. For example:
+
+```lua
+require("lexy").setup({
+    keymaps = {
+        search = "<leader>S",
+    },
+})
+```
 
 ## ❤️ Do you like my work?
 
