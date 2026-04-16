@@ -20,9 +20,6 @@ local common_win_options = {
 	},
 }
 
----@param item Snacks.PickerItem
----@param picker Snacks.Picker
----@return Snacks.FormattedEntry[]
 local function format_entries(item, picker)
 	local path = item.file or item.text or item
 	local basename = vim.fs.basename(path)
