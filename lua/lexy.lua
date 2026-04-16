@@ -73,7 +73,7 @@ M.list = function(opts)
 	end
 
 	if picker == "telescope" then
-		require("lexy.telescope").apidocs_open(opts)
+		require("lexy.telescope").lexy_list(opts)
 		return
 	end
 
