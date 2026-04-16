@@ -1,35 +1,23 @@
 # `lexy.nvim`
 
 > [!caution]
-> **Status:** Under development. Still not production-ready.
+> **Status:** Under development.
 
 ## ℹ️ About
 
 **lexy.nvim** is a Neovim plugin for working with local [Lexy](https://github.com/antoniorodr/lexy) documentation inside the editor. It is intended to connect Lexy's cached Learn X in Y Minutes files with familiar Neovim workflows and picker UIs.
-
-The project is currently focused on the integration layer: setup, commands, keymaps, and picker backends for Neovim.
-
-Project documentation currently lives in this README.
 
 ## 🎬 Demo
 
 ## ✨ Features
 
 - Integrates local Lexy documentation into Neovim
-- Registers a `:LexySearch {query}` user command
+- Registers a `:LexySearch {query}` and a `:LexyList` user command
 - Provides a configurable keymap hook for Lexy actions
 - Reads documentation from Lexy's local cache in `~/.config/lexy/files/`
-- Includes starter backend modules for `snacks.nvim` and `telescope.nvim`
-- Keeps the plugin setup lightweight and Lua-native
+- Integration with `snacks.nvim` and `telescope.nvim`
 
 ## 📋 Requirements
-
-Before starting, make sure the required tools and dependencies are installed on your machine:
-
-```bash
-nvim --version
-lexy --help
-```
 
 `lexy.nvim` requires Neovim 0.11 or newer and a working [Lexy](https://github.com/antoniorodr/lexy) installation. Since the plugin reads Lexy's local cache, you should run Lexy at least once so the files under `~/.config/lexy/files/` exist.
 
@@ -63,17 +51,10 @@ end)
 
 ## 🚀 Getting Started
 
-Once installed, configure the plugin and use one of the exposed entry points:
+Once installed, you can either use the `:LexySearch {query}` and `:LexyList` user commands or the default keymap `<leader>sl` to start searching through your local Lexy documentation. The plugin will read from the cached files in `~/.config/lexy/files/` and present results in a picker UI if you have one of the supported picker plugins installed.
 
-```lua
-require("lexy").setup({
-  keymap = "<leader>sl",
-})
-```
-
-Then use `:LexySearch python` or the configured keymap as your entry point into the plugin. The picker flow is still under active development.
-
-If you are using `snacks.nvim`, it is a good idea to run `:checkhealth snacks` to verify that the picker integration is set up correctly.
+> [!tip]
+> It's a good idea to run `:checkhealth snacks` to see if everything is set up correctly.
 
 ## ❤️ Do you like my work?
 
