@@ -7,6 +7,7 @@ local Config = {
 	picker = nil,
 	keymaps = {
 		list = "<leader>sll",
+		update = "<leader>slu",
 	},
 }
 
@@ -38,6 +39,13 @@ local function set_keymaps()
 				M.list(Config)
 			end,
 			desc = "List items",
+		},
+		update = {
+			mode = "n",
+			rhs = function()
+				M.update()
+			end,
+			desc = "Update lexy data",
 		},
 	}
 
@@ -78,6 +86,11 @@ M.list = function(opts)
 	end
 
 	vim.notify("No picker found, using ui_select", vim.log.levels.INFO)
+end
+
+M.update = function()
+	vim.notify("Updating lexy data...", vim.log.levels.INFO)
+	require("lexy.common").update_data()
 end
 
 ---@param opts table|nil

@@ -62,10 +62,21 @@ local function get_data_dirs(opts)
 	return dirs
 end
 
+local function update_data()
+	vim.system({ "lexy", "update" }, { text = true }, function(obj)
+		if obj.code == 0 then
+			print("Lexy updated successfully:", obj.stdout)
+		else
+			print("Lexy update failed:", obj.stderr)
+		end
+	end)
+end
+
 return {
 	data_folder = data_folder,
 	file_info = file_info,
 	get_data_dirs = get_data_dirs,
 	open_file_buffer = open_file_buffer,
 	find_docs = find_docs,
+	update_data = update_data,
 }
