@@ -1,36 +1,5 @@
 local common = require("lexy.common")
 
-local function get_data_dirs(opts)
-	local data_dir = common.data_folder()
-	if not (opts and opts.restrict_sources) then
-		return { data_dir }
-	end
-
-	local dirs = {}
-	for _, source in ipairs(opts.restrict_sources) do
-		local dir = data_dir .. source .. "/"
-		if vim.fn.isdirectory(dir) == 1 then
-			table.insert(dirs, dir)
-		end
-	end
-	return dirs
-end
-
-local function collect_files(opts)
-	local files = {}
-
-	for _, dir in ipairs(get_data_dirs(opts)) do
-		for name in vim.fs.dir(dir) do
-			local path = dir .. name
-			if vim.fn.isdirectory(path) == 0 then
-				table.insert(files, path)
-			end
-		end
-	end
-
-	return files
-end
-
 local function lexy_list(opts)
 	local pickers = require("telescope.pickers")
 	local finders = require("telescope.finders")
@@ -43,7 +12,7 @@ local function lexy_list(opts)
 		.new({}, {
 			prompt_title = "Lexy docs",
 			finder = finders.new_table({
-				results = collect_files(opts),
+				results = common.get_data_dirs(opts),
 				entry_maker = function(path)
 					local basename = vim.fs.basename(path)
 					return {

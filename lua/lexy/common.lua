@@ -46,9 +46,26 @@ local function find_docs(query)
 	vim.notify("No documentation found for query: " .. query, vim.log.levels.WARN)
 end
 
+---@param opts? { restrict_sources: string[] }
+local function get_data_dirs(opts)
+	local data_dir = data_folder()
+	if not (opts and opts.restrict_sources) then
+		return { data_dir }
+	end
+	local dirs = {}
+	for _, source in ipairs(opts.restrict_sources) do
+		local dir = data_dir .. source .. "/"
+		if vim.fn.isdirectory(dir) == 1 then
+			table.insert(dirs, dir)
+		end
+	end
+	return dirs
+end
+
 return {
 	data_folder = data_folder,
 	file_info = file_info,
+	get_data_dirs = get_data_dirs,
 	open_file_buffer = open_file_buffer,
 	find_docs = find_docs,
 }
