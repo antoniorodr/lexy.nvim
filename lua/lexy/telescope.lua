@@ -16,6 +16,7 @@ local function collect_files(opts)
 	return files
 end
 
+---@param opts? { restrict_sources: string[] }
 local function lexy_list(opts)
 	local pickers = require("telescope.pickers")
 	local finders = require("telescope.finders")
