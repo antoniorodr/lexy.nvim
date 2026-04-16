@@ -62,22 +62,6 @@ local function get_data_dirs(opts)
 	return dirs
 end
 
----@param opts? { restrict_sources: string[] }
-local function collect_files(opts)
-	local files = {}
-
-	for _, dir in ipairs(common.get_data_dirs(opts)) do
-		for name in vim.fs.dir(dir) do
-			local path = dir .. name
-			if vim.fn.isdirectory(path) == 0 then
-				table.insert(files, path)
-			end
-		end
-	end
-
-	return files
-end
-
 return {
 	data_folder = data_folder,
 	file_info = file_info,
