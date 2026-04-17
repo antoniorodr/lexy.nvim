@@ -1,6 +1,6 @@
 local function data_folder()
-	local folder = os.getenv("HOME") .. "/.config/lexy/files/"
-	return folder
+	local home = vim.loop.os_homedir()
+	return home .. "/.config/lexy/files/"
 end
 
 ---@param filename string
