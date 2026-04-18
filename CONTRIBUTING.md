@@ -28,9 +28,19 @@ All participation is governed by our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Testing
 
-This project uses [luassert](https://luarocks.org/modules/lunarmodules/luassert) and [busted](https://luarocks.org/modules/lunarmodules/busted).
+This project runs tests inside Neovim using [`lazy.minit`](https://github.com/folke/lazy.nvim/blob/main/lua/lazy/minit.lua) and [busted](https://luarocks.org/modules/lunarmodules/busted) in an isolated `.tests/` environment.
 
-Remember to install both of them before running tests.
+Run tests with:
+
+```bash
+bash scripts/test.sh
+```
+
+To run a single test file, pass it as an argument:
+
+```bash
+bash scripts/test.sh tests/common_spec.lua
+```
 
 ## Commit Style
 
