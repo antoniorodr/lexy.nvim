@@ -7,5 +7,17 @@ jobs:
     steps:
       - name: Checkout and setup
         uses: actions/checkout@v6.0.1
-
-        #TODO: Write logic to run test for neovim plugin (lua)
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y neovim luajit libluajit-5.1-dev luarocks
+      - name: Cache LuaRocks dependencies
+        uses: actions/cache@v5
+        with:
+          path: .tests/rocks
+          key: ${{ runner.os }}-rocks-${{ hashFiles('scripts/tests.sh',
+            'tests/busted.lua') }}
+      - name: Run tests
+        run: |
+          chmod +x scripts/test.sh
+          bash scripts/test.sh
