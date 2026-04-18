@@ -16,65 +16,21 @@ All participation is governed by our [Code of Conduct](CODE_OF_CONDUCT.md).
 1. Fork the project and clone your fork:
 
     ```bash
-    git clone https://github.com/antoniorodr/<project-name>
-    cd <project-name>
+    git clone https://github.com/antoniorodr/lexy.nvim
+    cd lexy.nvim
     ```
 
-2. Create a feature branch:
+2. Create a feature branch. Try to use [branch naming conventions](https://conventional-branch.github.io/#branch-naming-prefixes):
 
     ```bash
     git checkout -b my-feature
     ```
 
-3. Set up the environment with [uv](https://github.com/astral-sh/uv):
-
-    ```bash
-    uv venv
-    source .venv/bin/activate
-    uv sync
-    ```
-
-4. (Optional) Uninstall Homebrew version of <project-name>:
-
-    ```bash
-    brew uninstall <project-name>
-    ```
-
-5. Install the CLI locally in editable mode:
-
-    ```bash
-    uv tool install . -e
-    ```
-
-6. Run the tool:
-
-    ```bash
-    <project-name> --help
-    ```
-
-7. (Optional) Uninstall local version when you are done:
-
-    ```bash
-    uv tool uninstall <project-name>
-    ```
-
 ## Testing
 
-This project uses [pytest](https://docs.pytest.org/en/stable/), [pytest-asyncio](https://pytest-asyncio.readthedocs.io/en/stable/), [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/), and [pytest-mock](https://pytest-mock.readthedocs.io/en/latest/) for testing and coverage reporting.
+This project uses [luassert](https://luarocks.org/modules/lunarmodules/luassert) and [busted](https://luarocks.org/modules/lunarmodules/busted).
 
-Dev dependencies (including `pytest-cov`) are installed automatically when you run:
-
-```bash
-uv sync --group dev
-```
-
-To run the tests with coverage:
-
-```bash
-pytest
-```
-
-Coverage is configured in `pyproject.toml` and will output a summary in the terminal as well as a `coverage.lcov` file.
+Remember to install both of them before running tests.
 
 ## Commit Style
 
