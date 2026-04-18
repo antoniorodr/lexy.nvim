@@ -44,3 +44,11 @@ luac.out
 *.x86_64
 *.hex
 
+# Coverage files
+*.gcov
+lcov.info
+luacov.report.out
+luacov.stats.out
+
+# Test environment
+.tests/
