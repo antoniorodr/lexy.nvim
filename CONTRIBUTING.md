@@ -28,7 +28,7 @@ All participation is governed by our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Testing
 
-This project runs tests inside Neovim using [`lazy.minit`](https://github.com/folke/lazy.nvim/blob/main/lua/lazy/minit.lua) and [busted](https://luarocks.org/modules/lunarmodules/busted) in an isolated `.tests/` environment.
+This project runs tests inside Neovim with [busted](https://luarocks.org/modules/lunarmodules/busted) in an isolated `.tests/` environment. The test script bootstraps a repo-local LuaJIT rock tree on first run, so you do not need `lazy.nvim` or any global Neovim test harness setup.
 
 Run tests with:
 
