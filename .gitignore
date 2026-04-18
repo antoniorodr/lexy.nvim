@@ -52,3 +52,6 @@ luacov.stats.out
 
 # Test environment
 .tests/
+
+# Git-cliff
+cliff.toml
