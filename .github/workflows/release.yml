@@ -1,19 +1,23 @@
-name: Release
+name: Testing, create changelog and release
 on:
-  pull_request_target:
-    types: [opened, edited, synchronize, reopened]
+  push:
+    tags:
+      - "v*"
 jobs:
+  test:
+    uses: ./.github/workflows/tests.yml
   changelog:
-    name: Generate changelog
+    needs: test
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       release_body: ${{ steps.git-cliff.outputs.content }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
-
       - name: Generate changelog
         uses: orhun/git-cliff-action@v4
         id: git-cliff
@@ -23,24 +27,18 @@ jobs:
         env:
           OUTPUT: CHANGELOG.md
           GITHUB_REPO: ${{ github.repository }}
-
-      - name: Upload the binary releases
-        uses: svenstaro/upload-release-action@v2.11.5
-        with:
-          file: binary_release.zip
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
-          body: ${{ steps.git-cliff.outputs.content }}
-
-  upload:
-    name: Upload the release
+  release:
     needs: changelog
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Upload the binary releases
-        uses: svenstaro/upload-release-action@v2.11.5
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+      - name: Create release
+        uses: ncipollo/release-action@v1.21.0
         with:
-          file: binary_release.zip
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
+          tag: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
           body: ${{ needs.changelog.outputs.release_body }}
+          makeLatest: true
