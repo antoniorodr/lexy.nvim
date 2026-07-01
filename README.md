@@ -17,7 +17,7 @@
 - Registers a `:LexySearch {query}`, `:LexyUpdate` and a `:LexyList` user command
 - Provides a configurable keymap hook for `:LexyList` command
 - Reads documentation from Lexy's local cache in `~/.config/lexy/files/`
-- Integration with `snacks.nvim` and `telescope.nvim`
+- Integration with `snacks.nvim`, `telescope.nvim` and `mini.pick`
 
 ## 📋 Requirements
 
@@ -42,7 +42,7 @@ end)
 {
   "antoniorodr/lexy.nvim",
   dependencies = {
-    "folke/snacks.nvim", -- or "nvim-telescope/telescope.nvim"
+    "folke/snacks.nvim", -- or "nvim-telescope/telescope.nvim" or "echasnovski/mini.pick"
   },
   opts = {} -- see Configuration section below if you want to customize the plugin
 }
