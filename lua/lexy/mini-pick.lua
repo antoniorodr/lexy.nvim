@@ -18,7 +18,9 @@ local function lexy_list(opts)
 		source = {
 			items = files,
 			name = "Lexy docs",
-			show = MiniPick.default_show,
+			show = function(buf_id, items, query)
+				MiniPick.default_show(buf_id, items, query, { show_icons = true })
+			end,
 			choose = function(item)
 				common.open_file_buffer(item)
 			end,
