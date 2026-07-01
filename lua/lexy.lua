@@ -1,7 +1,7 @@
 local M = {}
 
 ---@class Config
----@field picker string|nil "snacks", "telescope", or "ui_select"
+---@field picker string|nil "snacks", "telescope", "mini_pick", or "ui_select"
 ---@field keymaps table|nil
 local Config = {
 	picker = nil,
@@ -26,6 +26,11 @@ local function resolve_picker(opts)
 	local has_telescope = pcall(require, "telescope")
 	if has_telescope then
 		return "telescope"
+	end
+
+	local has_mini_pick = pcall(require, "mini.pick")
+	if has_mini_pick then
+		return "mini_pick"
 	end
 
 	return "ui_select"
@@ -82,6 +87,11 @@ M.list = function(opts)
 
 	if picker == "telescope" then
 		require("lexy.telescope").lexy_list(opts)
+		return
+	end
+
+	if picker == "mini_pick" then
+		require("lexy.mini-pick").lexy_list(opts)
 		return
 	end
 
