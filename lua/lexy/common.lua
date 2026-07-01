@@ -18,6 +18,18 @@ end
 ---@param path string
 local function open_file_buffer(path)
 	local target_width = math.max(math.floor(vim.o.columns * 0.45), 1)
+	local data_dir = data_folder()
+
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local buf = vim.api.nvim_win_get_buf(win)
+		local bufname = vim.api.nvim_buf_get_name(buf)
+		if bufname:match("^" .. vim.pesc(data_dir)) then
+			vim.api.nvim_win_set_width(win, target_width)
+			vim.api.nvim_set_current_win(win)
+			vim.cmd("edit " .. vim.fn.fnameescape(path))
+			return
+		end
+	end
 
 	vim.cmd("botright vsplit")
 	vim.api.nvim_win_set_width(vim.api.nvim_get_current_win(), target_width)
