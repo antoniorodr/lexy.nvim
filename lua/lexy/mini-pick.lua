@@ -9,7 +9,7 @@ local function lexy_list(opts)
 		for name in vim.fs.dir(dir) do
 			local path = dir .. name
 			if vim.fn.isdirectory(path) == 0 then
-				table.insert(files, path)
+				table.insert(files, { path = path, text = name })
 			end
 		end
 	end
