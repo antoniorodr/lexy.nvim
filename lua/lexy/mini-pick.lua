@@ -22,12 +22,12 @@ local function lexy_list(opts)
 				MiniPick.default_show(buf_id, items, query, { show_icons = true })
 			end,
 			choose = function(item)
-				common.open_file_buffer(item)
+				common.open_file_buffer(item.path)
 			end,
 			preview = function(buf_id, item)
-				local lines = vim.fn.readfile(item)
+				local lines = vim.fn.readfile(item.path)
 				vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, lines)
-				vim.bo[buf_id].filetype = vim.filetype.match({ filename = item }) or "text"
+				vim.bo[buf_id].filetype = vim.filetype.match({ filename = item.path }) or "text"
 			end,
 		},
 	})
