@@ -22,6 +22,7 @@ local function lexy_list(opts)
 				MiniPick.default_show(buf_id, items, query, { show_icons = true })
 			end,
 			choose = function(item)
+				MiniPick.stop()
 				common.open_file_buffer(item.path)
 			end,
 			preview = function(buf_id, item)

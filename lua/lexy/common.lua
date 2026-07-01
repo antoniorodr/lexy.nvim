@@ -38,6 +38,8 @@ local function open_file_buffer(path)
 	local buf = vim.api.nvim_get_current_buf()
 	vim.bo[buf].readonly = true
 	vim.bo[buf].modifiable = false
+	vim.bo[buf].buflisted = false
+	vim.bo[buf].bufhidden = "wipe"
 	vim.diagnostic.enable(false, { bufnr = buf })
 end
 
