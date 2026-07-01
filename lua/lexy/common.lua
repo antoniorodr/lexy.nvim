@@ -17,8 +17,7 @@ end
 
 ---@param path string
 local function open_file_buffer(path)
-	local previous_win = vim.api.nvim_get_current_win()
-	local target_width = math.max(math.floor(vim.api.nvim_win_get_width(previous_win) / 2), 1)
+	local target_width = math.max(math.floor(vim.o.columns / 2), 1)
 
 	vim.cmd("botright vsplit")
 	vim.api.nvim_win_set_width(vim.api.nvim_get_current_win(), target_width)
