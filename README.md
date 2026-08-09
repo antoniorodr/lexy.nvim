@@ -1,3 +1,5 @@
+
+
 # `lexy.nvim`
 
 > [!caution]
@@ -53,7 +55,7 @@ end)
 Once installed, you can either use the `:LexySearch {query}`, `:LexyUpdate` and `:LexyList` user commands or the default keymap `<leader>sll` to start searching through your local Lexy documentation and `<leader>slu` to update and fetch new documentation if available. The plugin will read from the cached files in `~/.config/lexy/files/` and present results in a picker UI if you have one of the supported picker plugins installed.
 
 > [!tip]
-> It's a good idea to run `:checkhealth snacks` to see if everything is set up correctly.
+> It's a good idea to run `:checkhealth lexy` to see if everything is set up correctly.
 
 ## 🛠️ Configuration
 
