@@ -1,5 +1,5 @@
----@module "luassert"
-
+---@type Luassert
+local assert = require("luassert")
 local common = require("lexy.common")
 
 describe("common lexy files", function()
@@ -75,13 +75,6 @@ describe("common lexy update", function()
 	it("should call lexy update and notify on success", function()
 		local system_called = false
 		local notifications = {}
-		local original_notify = vim.notify
-		local original_system = vim.system
-
-		finally(function()
-			vim.notify = original_notify
-			vim.system = original_system
-		end)
 
 		vim.notify = function(message, level)
 			table.insert(notifications, { message = message, level = level })
