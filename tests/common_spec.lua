@@ -59,6 +59,19 @@ describe("common find docs", function()
 end)
 
 describe("common lexy update", function()
+	local original_notify
+	local original_system
+
+	before_each(function()
+		original_notify = vim.notify
+		original_system = vim.system
+	end)
+
+	after_each(function()
+		vim.notify = original_notify
+		vim.system = original_system
+	end)
+
 	it("should call lexy update and notify on success", function()
 		local system_called = false
 		local notifications = {}
