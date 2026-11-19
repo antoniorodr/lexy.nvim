@@ -1,0 +1,7 @@
+---@meta
+---
+---@class Luassert
+---@field equals fun(expected: any, actual: any, message?: string)
+---@field same fun(expected: any, actual: any, message?: string)
+---@field is_nil fun(value: any, message?: string)
+---@field is_true fun(value: any, message?: string)
